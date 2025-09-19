@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>PulseFocus </title>
   <meta name="theme-color" content="#071022">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#071022; --accent-1:#7c3aed; --accent-2:#5b21b6; --glass: rgba(255,255,255,0.04);
@@ -15,8 +16,26 @@
 
     /* Base reset */
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--text);-webkit-font-smoothing:antialiased}
-    body{background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent), linear-gradient(180deg,#041026 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center;padding:18px}
+    html, body {
+      height: 100%;
+      min-height: 100vh;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent), linear-gradient(180deg,#041026 0%,var(--bg) 100%);
+      /* Ajoute les insets pour iPhone */
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+      box-sizing: border-box;
+    }
+    body, input, button, select, textarea {
+      font-family: 'Roboto', Arial, sans-serif !important;
+    }
+    body {
+      min-height: 100vh;
+      min-width: 100vw;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
 
     /* Card layout */
     .card{width:100%;max-width:var(--max-width);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--card-radius);padding:18px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start;backdrop-filter: blur(6px) saturate(140%);-webkit-backdrop-filter: blur(6px) saturate(140%);border:1px solid rgba(255,255,255,0.04)}
@@ -47,12 +66,20 @@
     h1{font-size:18px;margin:0;font-weight:600}
     small{color:var(--muted)}
 
+    h1 {
+      color: #fff !important;
+    }
+
     /* Left: Timer */
     .left{display:flex;flex-direction:column;align-items:center;padding:10px;background: transparent !important;box-shadow: none !important;border: none !important;}
     .timer-wrap{position:relative;width:340px;height:340px;border-radius:50%;display:grid;place-items:center;background:transparent !important;box-shadow:none !important;border:none !important;overflow:visible}
     svg{transform:rotate(-90deg);width:100%;height:100%}
     .time{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:auto}
     .minutes{font-size:54px;font-weight:700;letter-spacing:0.6px}
+
+    .minutes, #time-display {
+      color: #fff !important;
+    }
 
     /* Animation du cercle de timer : effet néon pulsant + glow dynamique */
     #progress {
